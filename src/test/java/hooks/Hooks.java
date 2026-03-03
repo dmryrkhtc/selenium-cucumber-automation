@@ -1,24 +1,20 @@
 package hooks;
-
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
+import io.cucumber.java.AfterAll;
+import io.cucumber.java.BeforeAll;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import utilities.DriverManager;
 
 public class Hooks {
 
     public static WebDriver driver;
-    // her senaryodan once otomatik calis
-    @Before
-    public void setUp() {
-        //WebDriver referansı ChromeDriver objesini tuttu
-        driver = new ChromeDriver();
-        //hedef site
-        driver.get("https://www.saucedemo.com/");
+
+    @BeforeAll
+    public static void setUp() {
+       driver= DriverManager.getDriver();
     }
 
-    @After
-    public void tearDown() {
-        driver.quit();
+    @AfterAll
+    public static void tearDown() {
+        DriverManager.quitDriver();
     }
 }
