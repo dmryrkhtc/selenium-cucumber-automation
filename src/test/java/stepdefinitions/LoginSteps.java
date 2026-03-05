@@ -25,4 +25,20 @@ public class LoginSteps {
         Assertions.assertEquals("Products", actualTitle);
 
     }
+    @When("user enters invalid {string} and {string}")
+    public void user_enters_invalid_credentials(String wrong_user,String wrong_password){
+        loginPage.login(wrong_user,wrong_password);
+    }
+    @Then("user should see error message")
+    public void user_should_see_error_message(){
+
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        String err = loginPage.getErrorMessage();
+        Assertions.assertTrue(err.contains("Username and password do not match"));
+
+    }
 }

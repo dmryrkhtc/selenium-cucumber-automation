@@ -9,6 +9,7 @@ public class LoginPage extends BasePage {
     private By password = By.id("password");
     private By loginBtn = By.id("login-button");
     private By productsTitle = By.className("title");
+    private By errorMessage= By.cssSelector("[data-test='error']");
 
     //basepage constructure cagirdik
     public LoginPage(WebDriver driver) {
@@ -22,5 +23,8 @@ public class LoginPage extends BasePage {
     }
     public String getProductsTitle() {
        return driver.findElement(productsTitle).getText();
+    }
+    public String getErrorMessage(){
+        return driver.findElement(errorMessage).getText();
     }
 }

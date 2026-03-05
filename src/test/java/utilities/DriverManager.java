@@ -12,7 +12,8 @@ public class DriverManager {
             ChromeOptions options= new ChromeOptions();
             options.addArguments("--start-maximized");
             options.addArguments("--incognito");
-            options.addArguments("--headless");
+            /* test çalışır ama tarayıcı görünmez
+             options.addArguments("--headless"); */
             driver = new ChromeDriver(options);
         }
         return  driver;

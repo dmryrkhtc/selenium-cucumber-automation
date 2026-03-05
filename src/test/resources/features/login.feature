@@ -7,8 +7,12 @@ Feature: Login
        Then user should see homepage
 Examples:
     | username | password |
-    | error_user    |  secret_sauce  |
+    | performance_glitch_user    |  secret_sauce  |
     | problem_user         |  secret_sauce  |
     | standard_user    | secret_sauce  |
 
+Scenario: Unsuccessful login with invalid credentials
+  Given user is on login page
+  When user enters invalid "wrong_user" and "wrong_password"
+  Then user should see error message
 
