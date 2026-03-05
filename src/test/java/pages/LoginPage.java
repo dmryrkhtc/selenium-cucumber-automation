@@ -1,6 +1,12 @@
 package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import utilities.WaitManager;
+
+import java.time.Duration;
+
 //BasePage miras aldik
 public class LoginPage extends BasePage {
 
@@ -17,14 +23,20 @@ public class LoginPage extends BasePage {
     }
 
     public void login(String user, String pass) {
+        //element hazir olmadan islem yapmayi onlemek icin
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(username));
+
         driver.findElement(username).sendKeys(user);
         driver.findElement(password).sendKeys(pass);
         driver.findElement(loginBtn).click();
     }
     public String getProductsTitle() {
+        WaitManager.waitForVisibility(productsTitle);
        return driver.findElement(productsTitle).getText();
     }
     public String getErrorMessage(){
+        WaitManager.waitForVisibility(errorMessage);
         return driver.findElement(errorMessage).getText();
     }
 }

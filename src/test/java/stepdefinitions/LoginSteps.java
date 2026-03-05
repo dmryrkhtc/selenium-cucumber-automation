@@ -26,8 +26,8 @@ public class LoginSteps {
 
     }
     @When("user enters invalid {string} and {string}")
-    public void user_enters_invalid_credentials(String wrong_user,String wrong_password){
-        loginPage.login(wrong_user,wrong_password);
+    public void user_enters_invalid_credentials(String username,String password){
+        loginPage.login(username,password);
     }
     @Then("user should see error message")
     public void user_should_see_error_message(){

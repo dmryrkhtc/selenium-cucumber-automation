@@ -13,6 +13,6 @@ Examples:
 
 Scenario: Unsuccessful login with invalid credentials
   Given user is on login page
-  When user enters invalid "wrong_user" and "wrong_password"
+  When user enters invalid "wrong_username" and "wrong_password"
   Then user should see error message
 
