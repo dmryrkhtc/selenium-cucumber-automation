@@ -4,6 +4,7 @@ import hooks.Hooks;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.jupiter.api.Assertions;
 import pages.LoginPage;
 
 public class LoginSteps {
@@ -20,6 +21,8 @@ public class LoginSteps {
     }
     @Then("user should see homepage")
     public void verify_homepage(){
-        System.out.println("Login Başarılı!");
+        String actualTitle = loginPage.getProductsTitle();
+        Assertions.assertEquals("Products", actualTitle);
+
     }
 }
