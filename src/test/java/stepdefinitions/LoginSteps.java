@@ -6,12 +6,13 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
 import pages.LoginPage;
+import utilities.ConfigReader;
 
 public class LoginSteps {
     LoginPage loginPage =new LoginPage(Hooks.driver);
     @Given("user is on login page")
     public void user_on_login_page(){
-        Hooks.driver.get("https://www.saucedemo.com/");
+        Hooks.driver.get(ConfigReader.get("url"));
     }
     //tek senaryo birden fazla kullanici
     @When("user enters valid {string} and {string}")

@@ -24,8 +24,7 @@ public class LoginPage extends BasePage {
 
     public void login(String user, String pass) {
         //element hazir olmadan islem yapmayi onlemek icin
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(username));
+    WaitManager.waitForVisibility(username);
 
         driver.findElement(username).sendKeys(user);
         driver.findElement(password).sendKeys(pass);

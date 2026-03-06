@@ -10,10 +10,15 @@ public class DriverManager {
     public static WebDriver getDriver(){
         if (driver==null){
             ChromeOptions options= new ChromeOptions();
+            //tarayiciyi tam ekran acar
             options.addArguments("--start-maximized");
+            //notification popup cikarmaz
+            options.addArguments("--disable-notifications");
+            //tarayici gizli modta acilir
             options.addArguments("--incognito");
             /* test çalışır ama tarayıcı görünmez
              options.addArguments("--headless"); */
+
             driver = new ChromeDriver(options);
         }
         return  driver;
