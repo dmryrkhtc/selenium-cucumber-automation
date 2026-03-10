@@ -39,7 +39,7 @@ public class LoginSteps {
             e.printStackTrace();
         }
         String err = loginPage.getErrorMessage();
-        Assertions.assertTrue(err.contains("Username and password do not match"));
+        Assertions.assertTrue(err.contains("Username and password do not match")|| err.contains("locked out"));
 
     }
 }

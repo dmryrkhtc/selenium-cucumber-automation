@@ -9,8 +9,11 @@ public class Hooks {
     public static WebDriver driver;
 
     @BeforeAll
-    public static void setUp() {
-       driver= DriverManager.getDriver();
+
+    public static void setUp(){
+
+
+    driver= DriverManager.getDriver();
     }
 
     @AfterAll
