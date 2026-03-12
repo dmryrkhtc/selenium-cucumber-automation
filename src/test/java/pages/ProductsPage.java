@@ -17,12 +17,12 @@ public class ProductsPage extends BasePage{
 
     public List<WebElement> getAllProducts(){
         WaitManager.waitForVisibility(products);
-       return driver.findElements(products);
+       return findElements(products);
 
     }
     public List<WebElement> getProductNames(){
         WaitManager.waitForVisibility(productNames);
-        return driver.findElements(productNames);
+        return findElements(productNames);
     }
 public int getProductCount(){
         return getAllProducts().size();

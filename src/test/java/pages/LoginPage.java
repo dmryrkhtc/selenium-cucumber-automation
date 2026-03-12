@@ -25,17 +25,18 @@ public class LoginPage extends BasePage {
     public void login(String user, String pass) {
         //element hazir olmadan islem yapmayi onlemek icin
     WaitManager.waitForVisibility(username);
+        WaitManager.waitForVisibility(password);
 
-        driver.findElement(username).sendKeys(user);
-        driver.findElement(password).sendKeys(pass);
-        driver.findElement(loginBtn).click();
+        sendKeys(username,user);
+        sendKeys(password,pass);
+        click(loginBtn);
     }
     public String getProductsTitle() {
         WaitManager.waitForVisibility(productsTitle);
-       return driver.findElement(productsTitle).getText();
+       return getText(productsTitle);
     }
     public String getErrorMessage(){
         WaitManager.waitForVisibility(errorMessage);
-        return driver.findElement(errorMessage).getText();
+        return getText(errorMessage);
     }
 }
