@@ -17,6 +17,7 @@ public class ProductSteps {
     public void user_logged_in_products_page(String user,String pass){
 
         Hooks.driver.get("https://www.saucedemo.com/");
+        //kotu kullanim
         loginPage.login("standard_user","secret_sauce");
 
     }

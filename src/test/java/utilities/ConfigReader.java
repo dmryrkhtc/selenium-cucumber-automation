@@ -25,7 +25,7 @@ public class ConfigReader {
         config = yaml.load(inputStream);
     }
 //config map icinden deger alir
-    // key--->url olursa karsiligi--->https://www.saucedemo.com
+    // key--->url olursa karsiligi--->https://www.saucedemo.com4
     public static String get(String key){
         return config.get(key).toString();
     }

@@ -1,11 +1,6 @@
 package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import utilities.WaitManager;
-
-import java.time.Duration;
 
 //BasePage miras aldik
 public class LoginPage extends BasePage {
@@ -19,24 +14,22 @@ public class LoginPage extends BasePage {
 
     //basepage constructure cagirdik
     public LoginPage(WebDriver driver) {
+        //basepage constructor gidip ayaga kaldiriyor
         super(driver);
     }
 
     public void login(String user, String pass) {
-        //element hazir olmadan islem yapmayi onlemek icin
-    WaitManager.waitForVisibility(username);
-        WaitManager.waitForVisibility(password);
-
+        //sendkeys metodu icinde bekleme var
         sendKeys(username,user);
         sendKeys(password,pass);
         click(loginBtn);
     }
     public String getProductsTitle() {
-        WaitManager.waitForVisibility(productsTitle);
+
        return getText(productsTitle);
     }
     public String getErrorMessage(){
-        WaitManager.waitForVisibility(errorMessage);
+
         return getText(errorMessage);
     }
 }
