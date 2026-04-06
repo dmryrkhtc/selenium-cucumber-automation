@@ -27,6 +27,20 @@ public class BasePage {
         this.wait=new WebDriverWait(driver, Duration.ofSeconds(timeout));
 
     }
+    //yeni acilan sekmeye gecis
+    protected void switchToNewWindow(){
+        //su anki sekme
+        String currentHandle= driver.getWindowHandle();
+        //tum acik sekmeleri tara
+        for (String handle : driver.getWindowHandles()){
+            //eski olmayan ilk sekmeye gec
+            if(!handle.equals(currentHandle)){
+                driver.switchTo().window(handle);
+                break;
+            }
+
+        }
+    }
     //tiklama metodu
 protected void click(By locator){
 wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
