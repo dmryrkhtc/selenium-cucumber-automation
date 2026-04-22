@@ -43,7 +43,8 @@ public class BasePage {
     }
     //tiklama metodu
 protected void click(By locator){
-wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
+//tıklanilabilir olana kadar bekle(custom click)
+        wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
 }
 //yazi yazma metodu gorunur olana kadar bekle temizle yaz
 protected void sendKeys(By locator, String text){
@@ -82,6 +83,16 @@ protected List<String> getElementsText(By locator){
         return texts;
 
 }
+//sayfayi asagiya kaydirip elemente odaklanir
+protected void scrollToElement(By locator){
+        WebElement element =driver.findElement(locator);
+    ((org.openqa.selenium.JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);",element);
+
+    }
+    //yeni sekme acma
+    protected  void openNewTab(){
+        ((org.openqa.selenium.JavascriptExecutor) driver).executeScript("window.open();");
+    }
 
 }
 

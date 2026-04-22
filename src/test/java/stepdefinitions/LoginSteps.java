@@ -9,7 +9,10 @@ import pages.LoginPage;
 import utilities.ConfigReader;
 
 public class LoginSteps {
-    LoginPage loginPage =new LoginPage(Hooks.driver);
+    LoginPage loginPage =new LoginPage(
+            //hooks uzerinden gelen tek bir static driver kullanıyoruz
+            Hooks.driver
+    );
     @Given("user is on login page")
     public void user_on_login_page(){
         Hooks.driver.get(ConfigReader.get("url"));
@@ -33,13 +36,8 @@ public class LoginSteps {
     @Then("user should see error message")
     public void user_should_see_error_message(){
 
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         String err = loginPage.getErrorMessage();
-        Assertions.assertTrue(err.contains("Username and password do not match")|| err.contains("locked out"));
+        Assertions.assertTrue(err.contains("Username and password do not match")|| err.contains("locked out"),"Hata mesajı beklenen içeriği barındırmıyor!");
 
     }
 }
