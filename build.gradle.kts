@@ -10,8 +10,7 @@ repositories {
 }
 
 dependencies {
-
-
+    testImplementation("org.yaml:snakeyaml:2.2")
         testImplementation("org.seleniumhq.selenium:selenium-java:4.18.1")
 
         testImplementation("io.cucumber:cucumber-java:7.15.0")

@@ -1,24 +1,37 @@
 package hooks;
-
 import io.cucumber.java.After;
-import io.cucumber.java.Before;
+import io.cucumber.java.AfterAll;
+import io.cucumber.java.BeforeAll;
+import io.cucumber.java.Scenario;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import utilities.DriverManager;
 
 public class Hooks {
 
     public static WebDriver driver;
-    // her senaryodan once otomatik calis
-    @Before
-    public void setUp() {
-        //WebDriver referansı ChromeDriver objesini tuttu
-        driver = new ChromeDriver();
-        //hedef site
-        driver.get("https://www.saucedemo.com/");
+
+    @BeforeAll
+
+    public static void setUp(){
+
+// tum testler baslamadan bir kez calisir
+    driver= DriverManager.getDriver();
+    }
+    @After
+    public void takeScreenshotOnFailure(Scenario scenario){
+        //her senaryo sonunda calisir
+        //tarayici kapatmaz,hata varsa fotograf ceker
+        if(scenario.isFailed()){
+            final byte[] screenshot= ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+            scenario.attach(screenshot,"image/png", scenario.getName());
+        }
     }
 
-    @After
-    public void tearDown() {
-        driver.quit();
+    @AfterAll
+    public static void tearDown() {
+        // tum testler bittikten sonra bir kez calisir
+        DriverManager.quitDriver();
     }
 }
